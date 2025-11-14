@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import Cart from "./pages/Cart.jsx";
 import { Toaster } from "react-hot-toast";
+import Checkout from "./pages/Checkout.jsx"
 
 // Layout Component (Header stays consistent everywhere)
 const Layout = () => {
@@ -36,8 +37,12 @@ const AppRoutes = createBrowserRouter([
         element: <ProductDetail />,
       },
       {
-        path: "cart", // ✅ New Cart Route
+        path: "cart", // Cart Route
         element: <Cart />,
+      },
+      {
+        path: "checkout", // Checkout Route
+        element: <Checkout />,
       },
     ],
   },

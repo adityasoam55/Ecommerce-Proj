@@ -14,7 +14,7 @@ const ProductItem = ({ product }) => {
       <Link to={`/product/${product.id}`}>
         <div className="w-full h-48 bg-gray-100 flex items-center justify-center mb-4 rounded">
           <img
-            src={product.image}
+            src={product.thumbnail}
             alt={product.title}
             className="h-full object-contain"
           />

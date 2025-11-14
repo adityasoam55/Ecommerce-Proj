@@ -4,7 +4,7 @@ import ProductItem from "./ProductItem";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchQuery } from "../store/searchSlice";
 
-const ProductList = ({ onAddToCart }) => {
+const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -61,16 +61,7 @@ const ProductList = ({ onAddToCart }) => {
           </p>
         ) : (
           filteredProducts.map((product) => (
-            <ProductItem
-              key={product.id}
-              product={{
-                id: product.id,
-                title: product.title,
-                price: product.price,
-                image: product.thumbnail,
-              }}
-              onAddToCart={onAddToCart}
-            />
+            <ProductItem key={product.id} product={product} />
           ))
         )}
       </div>

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import CartItem from "../components/CartItem";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems, totalQty, totalPrice } = useSelector(
@@ -28,9 +29,12 @@ const Cart = () => {
               Total Price: <span className="font-semibold">₹{totalPrice}</span>
             </p>
 
-            <button className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold">
+            <Link
+              to="/checkout"
+              className="bg-blue-600 text-white px-4 py-2 rounded block text-center mt-4"
+            >
               Proceed to Checkout
-            </button>
+            </Link>
           </div>
         </>
       )}
