@@ -1,10 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
-const initialState = {
+// Load from localStorage
+const savedCart = JSON.parse(localStorage.getItem("cart"));
+
+const initialState = savedCart || {
   cartItems: [],
   totalQty: 0,
   totalPrice: 0,
+};
+
+const saveToLocalStorage = (state) => {
+  localStorage.setItem("cart", JSON.stringify(state));
 };
 
 const cartSlice = createSlice({
@@ -12,7 +19,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     clearCart: (state) => {
-      state.cartItems = []; 
+      state.cartItems = [];
       state.totalQty = 0;
       state.totalPrice = 0;
       localStorage.removeItem("cart");
@@ -23,15 +30,17 @@ const cartSlice = createSlice({
       const existing = state.cartItems.find((i) => i.id === item.id);
 
       if (existing) {
-        existing.quantity += 1; 
+        existing.quantity += 1;
         toast.success("Increased quantity!");
       } else {
-        state.cartItems.push({ ...item, quantity: 1 }); 
+        state.cartItems.push({ ...item, quantity: 1 });
         toast.success("Added to cart!");
       }
 
       state.totalQty += 1;
       state.totalPrice += item.price;
+
+      saveToLocalStorage(state);
     },
 
     removeFromCart: (state, action) => {
@@ -45,6 +54,8 @@ const cartSlice = createSlice({
         state.totalPrice -= item.price * item.quantity;
 
         state.cartItems = state.cartItems.filter((i) => i.id !== id);
+
+        saveToLocalStorage(state);
       }
     },
 
@@ -54,15 +65,20 @@ const cartSlice = createSlice({
         item.quantity += 1;
         state.totalQty += 1;
         state.totalPrice += item.price;
+
+        saveToLocalStorage(state);
       }
     },
 
     decreaseQty: (state, action) => {
       const item = state.cartItems.find((i) => i.id === action.payload);
+
       if (item && item.quantity > 1) {
         item.quantity -= 1;
         state.totalQty -= 1;
         state.totalPrice -= item.price;
+
+        saveToLocalStorage(state);
       }
     },
   },
