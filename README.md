@@ -1,16 +1,113 @@
-# React + Vite
+# 🛒 ShopEase — Modern E-Commerce Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ShopEase is a fully functional and responsive **E-Commerce web application** built using **React.js**, **Redux Toolkit**, **Tailwind CSS**, and **React Router**.  
+It includes product listing, product details, search functionality, cart management, checkout page, and smooth UI/UX enhancements.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+### 🎯 Core Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Product Listing (Fetched from DummyJSON API)
+- Product Detail Page
+- Add to Cart / Remove from Cart
+- Increase & Decrease Quantity
+- Search Products in Real-Time
+- Top Rated Products Carousel
+- Responsive & Clean UI
 
-## Expanding the ESLint configuration
+### 🛍 Cart Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Persistent Cart using **LocalStorage**
+- Live calculation of:
+  - Total Quantity
+  - Total Price
+- Toast notifications using **react-hot-toast**
+
+### 🧭 Navigation
+
+React Router-based pages include:
+
+- Home
+- Product Details
+- Cart
+- Checkout
+- About
+- 404 Page
+
+### 🎨 UI/UX Enhancements
+
+- Styled with **Tailwind CSS**
+- Fully mobile-responsive
+- Scroll-to-top on route change
+- Reusable components:
+  - Header
+  - Footer
+  - LoadingSpinner
+  - ProductItem
+  - ScrollToTop
+  - ProductDetail
+
+---
+
+## 🏗️ Tech Stack
+
+| Technology          | Purpose                     |
+| ------------------- | --------------------------- |
+| **React.js**        | Frontend UI                 |
+| **Redux Toolkit**   | Global State (cart, search) |
+| **React Router**    | Navigation & Routing        |
+| **Tailwind CSS**    | Styling                     |
+| **DummyJSON API**   | Product Data                |
+| **Axios**           | API Requests                |
+| **React Hot Toast** | Notifications               |
+
+---
+
+## 📁 Project Structure
+
+src/
+│
+├── components/
+│ ├── CartItem.jsx
+│ ├── Footer.jsx
+│ ├── Header.jsx
+│ ├── LoadingSpinner.jsx
+│ ├── ProductDetail.jsx
+│ ├── ProductItem.jsx
+│ ├── ProductList.jsx
+│ └── ScrollToTop.jsx
+│
+├── pages/
+│ ├── Cart.jsx
+│ ├── Checkout.jsx
+│ └── NotFound.jsx
+│
+├── store/
+│ ├── cartSlice.js
+│ ├── searchSlice.js
+│ └── store.js
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+
+🔧 Installation & Setup
+
+Follow these steps to run the project locally:
+
+1️⃣ Clone the Repository
+git clone https://github.com/adityasoam55/Ecommerce-Proj
+cd shopease
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Start the Development Server
+npm run dev
+
+🔗 API Used
+
+This project uses DummyJSON for product data.
+https://dummyjson.com/products

@@ -42,6 +42,16 @@ const ProductList = () => {
 
   return (
     <div className="my-20 px-5">
+      <div className="text-center mb-12">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+          Welcome to <span className="text-blue-600">ShopEase</span>
+        </h1>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Discover high-quality products at the best prices. Browse our latest
+          collection and find exactly what you’re looking for!
+        </p>
+      </div>
+
       {/* ⭐ Top Rated Products Section */}
       {topRated.length > 0 && (
         <div className="mb-10">
