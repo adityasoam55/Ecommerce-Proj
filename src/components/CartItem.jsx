@@ -7,13 +7,11 @@ const CartItem = ({ item }) => {
   return (
     <div className="flex items-center justify-between bg-white p-4 rounded-lg shadow mb-3 border">
       <div className="flex items-center gap-4">
-        <div className="w-20 h-20">
-          <img
-            src={item.thumbnail}
-            alt={item.title}
-            className="w-full h-full object-cover rounded"
-          />
-        </div>
+        <img
+          src={item.thumbnail}
+          alt={item.title}
+          className="w-20 h-20 object-cover rounded"
+        />
 
         <div>
           <h3 className="font-semibold text-lg">{item.title}</h3>

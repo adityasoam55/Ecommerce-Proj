@@ -1,11 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/cartSlice";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -22,6 +26,15 @@ const ProductDetail = () => {
     fetchProduct();
   }, [id]);
 
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        ...product,
+        thumbnail: product.thumbnail || product.images?.[0], // fallback
+      })
+    );
+  };
+
   if (loading) return <p className="text-center py-6">Loading...</p>;
 
   if (!product) return <p className="text-center py-6">Product not found</p>;
@@ -32,7 +45,7 @@ const ProductDetail = () => {
         {/* Image */}
         <div className="w-full bg-gray-100 rounded-lg p-6 flex items-center justify-center">
           <img
-            src={product.thumbnail}
+            src={product.thumbnail || product.images?.[0]}
             alt={product.title}
             className="h-72 object-contain"
           />
@@ -45,7 +58,10 @@ const ProductDetail = () => {
 
           <p className="text-2xl font-semibold mb-4">₹{product.price}</p>
 
-          <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+          <button
+            onClick={handleAddToCart}
+            className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+          >
             Add to Cart
           </button>
         </div>
