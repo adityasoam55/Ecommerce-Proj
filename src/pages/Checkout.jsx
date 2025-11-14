@@ -44,26 +44,48 @@ const Checkout = () => {
 
       <form onSubmit={handlePlaceOrder} className="space-y-4">
         {/* User Details */}
-        <input
-          type="text"
-          placeholder="Full Name"
-          required
-          className="w-full border p-2 rounded"
-        />
+        <span className="flex flex-col gap-2 md:flex-row">
+          <input
+            type="text"
+            placeholder="Full Name"
+            required
+            className="w-full border p-2 rounded"
+          />
 
-        <input
-          type="email"
-          placeholder="Email"
-          required
-          className="w-full border p-2 rounded"
-        />
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            className="w-full border p-2 rounded"
+          />
+        </span>
 
         <textarea
           placeholder="Shipping Address"
           required
           className="w-full border p-2 rounded"
-          rows={3}
+          rows={2}
         ></textarea>
+        <span className="flex flex-col gap-2 md:flex-row">
+          <input
+            type="text"
+            placeholder="City"
+            required
+            className="w-full border p-2 rounded"
+          />
+          <input
+            type="text"
+            placeholder="State"
+            required
+            className="w-full border p-2 rounded"
+          />
+          <input
+            type="number"
+            placeholder="Pincode"
+            required
+            className="w-full border p-2 rounded"
+          />
+        </span>
 
         {/* Order Summary */}
         <div className="bg-gray-100 p-4 rounded mt-4">
