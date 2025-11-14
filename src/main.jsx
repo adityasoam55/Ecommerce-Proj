@@ -10,7 +10,8 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import Cart from "./pages/Cart.jsx";
 import { Toaster } from "react-hot-toast";
-import Checkout from "./pages/Checkout.jsx"
+import Checkout from "./pages/Checkout.jsx";
+import Footer from "./components/Footer.jsx";
 
 // Layout Component (Header stays consistent everywhere)
 const Layout = () => {
@@ -18,6 +19,7 @@ const Layout = () => {
     <>
       <Header />
       <Outlet />
+      <Footer />
     </>
   );
 };

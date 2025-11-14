@@ -11,9 +11,7 @@ const Header = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Shop", path: "/shop" },
     { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
   ];
 
   const closeMenu = () => setMobileMenuOpen(false);
@@ -25,7 +23,7 @@ const Header = () => {
           {/* Logo */}
           <div className="shrink-0">
             <Link to="/">
-              <h1 className="text-2xl font-bold text-gray-800">ShopMate</h1>
+              <h1 className="text-2xl font-bold text-gray-800">ShopEase</h1>
             </Link>
           </div>
 

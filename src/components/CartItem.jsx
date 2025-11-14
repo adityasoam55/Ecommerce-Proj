@@ -38,7 +38,7 @@ const CartItem = ({ item }) => {
           –
         </button>
 
-        <span className="font-semibold text-lg">{item.qty}</span>
+        <span className="font-semibold text-lg">{item.quantity}</span>
 
         <button
           onClick={() => dispatch(increaseQty(item.id))}
