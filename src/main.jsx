@@ -12,11 +12,13 @@ import Cart from "./pages/Cart.jsx";
 import { Toaster } from "react-hot-toast";
 import Checkout from "./pages/Checkout.jsx";
 import Footer from "./components/Footer.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 // Layout Component (Header stays consistent everywhere)
 const Layout = () => {
   return (
     <>
+      <ScrollToTop />
       <Header />
       <Outlet />
       <Footer />
