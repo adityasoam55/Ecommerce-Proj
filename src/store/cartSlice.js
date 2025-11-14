@@ -30,15 +30,15 @@ const cartSlice = createSlice({
       const existing = state.cartItems.find((i) => i.id === item.id);
 
       if (existing) {
-        existing.quantity += 1;
+        existing.quantity += item.qty; // ← Use selected qty
         toast.success("Increased quantity!");
       } else {
-        state.cartItems.push({ ...item, quantity: 1 });
+        state.cartItems.push({ ...item, quantity: item.qty }); // ← Use selected qty
         toast.success("Added to cart!");
       }
 
-      state.totalQty += 1;
-      state.totalPrice += item.price;
+      state.totalQty += item.qty; // ← Increase by selected qty
+      state.totalPrice += item.price * item.qty; // ← Add total price
 
       saveToLocalStorage(state);
     },
