@@ -5,8 +5,12 @@ import App from "./App.jsx";
 import ProductDetail from "./components/ProductDetail.jsx";
 import Header from "./components/Header.jsx";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import NotFound from "./pages/NotFound.jsx";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+import Cart from "./pages/Cart.jsx"; 
 
-// Layout Component (Header and Footer stays constant)
+// Layout Component (Header stays consistent everywhere)
 const Layout = () => {
   return (
     <>
@@ -19,15 +23,20 @@ const Layout = () => {
 const AppRoutes = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />, // Header and Footer stays here!
+    element: <Layout />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
-        element: <App />, // your home page
+        element: <App />, // Home page
       },
       {
         path: "product/:id",
         element: <ProductDetail />,
+      },
+      {
+        path: "cart", // ✅ New Cart Route
+        element: <Cart />,
       },
     ],
   },
@@ -35,6 +44,8 @@ const AppRoutes = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={AppRoutes} />
+    <Provider store={store}>
+      <RouterProvider router={AppRoutes} />
+    </Provider>
   </StrictMode>
 );

@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { FiShoppingCart, FiMenu, FiX } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navLinks = ["Home", "Shop", "About", "Contact"];
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Shop", path: "/shop" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  const closeMenu = () => setMobileMenuOpen(false);
 
   return (
     <header className="bg-white shadow-md fixed top-0 w-full z-50">
@@ -12,27 +20,29 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="shrink-0">
-            <h1 className="text-2xl font-bold text-gray-800">ShopMate</h1>
+            <Link to="/">
+              <h1 className="text-2xl font-bold text-gray-800">ShopMate</h1>
+            </Link>
           </div>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex space-x-6">
             {navLinks.map((link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
+              <Link
+                key={link.name}
+                to={link.path}
                 className="text-gray-700 hover:text-blue-500 font-medium"
               >
-                {link}
-              </a>
+                {link.name}
+              </Link>
             ))}
           </nav>
 
           {/* Right Icons */}
           <div className="flex items-center space-x-4">
-            <button className="text-gray-700 hover:text-blue-500">
+            <Link to="/cart" className="text-gray-700 hover:text-blue-500">
               <FiShoppingCart size={24} />
-            </button>
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
@@ -50,13 +60,14 @@ const Header = () => {
         <div className="md:hidden bg-white shadow-md">
           <nav className="px-2 pt-2 pb-4 space-y-2">
             {navLinks.map((link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
+              <Link
+                key={link.name}
+                to={link.path}
+                onClick={closeMenu}
                 className="block text-gray-700 hover:text-blue-500 font-medium"
               >
-                {link}
-              </a>
+                {link.name}
+              </Link>
             ))}
           </nav>
         </div>
