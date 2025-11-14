@@ -3,6 +3,7 @@ import axios from "axios";
 import ProductItem from "./ProductItem";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchQuery } from "../store/searchSlice";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -33,12 +34,7 @@ const ProductList = () => {
     p.title.toLowerCase().includes(searchQuery)
   );
 
-  if (loading)
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="w-12 h-12 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin"></div>
-      </div>
-    );
+  if (loading) return <LoadingSpinner />;
 
   if (error) return <p className="text-center text-red-500 py-6">{error}</p>;
 
