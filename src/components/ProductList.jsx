@@ -34,12 +34,31 @@ const ProductList = () => {
     p.title.toLowerCase().includes(searchQuery)
   );
 
-  if (loading) return <LoadingSpinner />;
+  // Filter top-rated items (rating >= 4)
+  const topRated = products.filter((p) => p.rating >= 4.5);
 
+  if (loading) return <LoadingSpinner />;
   if (error) return <p className="text-center text-red-500 py-6">{error}</p>;
 
   return (
-    <div className="my-20 px-3">
+    <div className="my-20 px-5">
+      {/* ⭐ Top Rated Products Section */}
+      {topRated.length > 0 && (
+        <div className="mb-10">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            ⭐ Top Rated Products
+          </h2>
+
+          <div className="flex gap-4 overflow-x-scroll py-2">
+            {topRated.map((product) => (
+              <div key={product.id} className="min-w-[200px]">
+                <ProductItem product={product} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Search Bar */}
       <div className="flex justify-center mb-8">
         <input
