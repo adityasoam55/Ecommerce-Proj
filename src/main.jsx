@@ -13,6 +13,7 @@ import { Toaster } from "react-hot-toast";
 import Checkout from "./pages/Checkout.jsx";
 import Footer from "./components/Footer.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import About from "./pages/About.jsx";
 
 // Layout Component (Header stays consistent everywhere)
 const Layout = () => {
@@ -47,6 +48,10 @@ const AppRoutes = createBrowserRouter([
       {
         path: "checkout", // Checkout Route
         element: <Checkout />,
+      },
+      {
+        path: "about", // Checkout Route
+        element: <About />,
       },
     ],
   },

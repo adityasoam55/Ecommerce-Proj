@@ -11,7 +11,7 @@ const Header = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
+    { name: "About", path: "about" },
   ];
 
   const closeMenu = () => setMobileMenuOpen(false);
