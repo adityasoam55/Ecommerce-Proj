@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cartSlice";
-import LoadingSpinner from '../components/LoadingSpinner'
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -87,9 +87,24 @@ const ProductDetail = () => {
             ⭐ {product.rating} / 5 Ratings
           </p>
 
-          <p className="text-3xl font-semibold text-red-500 mb-4">
-            ${product.price}
-          </p>
+          {/* Price + Discount */}
+          <div className="mb-4">
+            <p className="text-3xl font-bold text-gray-900">
+              $
+              {(
+                product.price -
+                (product.price * product.discountPercentage) / 100
+              ).toFixed(2)}
+            </p>
+
+            <p className="text-sm text-gray-500 line-through">
+              ${product.price}
+            </p>
+
+            <span className="bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-md">
+              {product.discountPercentage}% OFF
+            </span>
+          </div>
 
           <p className="text-gray-700 leading-relaxed mb-6">
             {product.description}
