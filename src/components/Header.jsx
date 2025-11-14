@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { FiShoppingCart, FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Get cart quantity from Redux
+  const totalQty = useSelector((state) => state.cart.totalQty);
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -39,9 +43,19 @@ const Header = () => {
           </nav>
 
           {/* Right Icons */}
-          <div className="flex items-center space-x-4">
-            <Link to="/cart" className="text-gray-700 hover:text-blue-500">
+          <div className="flex items-center space-x-4 relative">
+            {/* Cart Icon + Badge */}
+            <Link
+              to="/cart"
+              className="text-gray-700 hover:text-blue-500 relative"
+            >
               <FiShoppingCart size={24} />
+
+              {totalQty > 0 && (
+                <span className="absolute -top-2 -right-3 bg-blue-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                  {totalQty}
+                </span>
+              )}
             </Link>
 
             {/* Mobile Menu Button */}
